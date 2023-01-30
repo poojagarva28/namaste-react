@@ -1,7 +1,8 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useState } from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import useOnline from "../utils/useOnline";
+import UserContext from "../utils/userContext";
 import "./assets/css/index.css";
 import About from "./components/About/About";
 import Login from "./components/Authentication/Login";
@@ -17,13 +18,24 @@ const Instamart = lazy(() => import("./components/InstaMart/InstaMart"));
 
 const App = () => {
   const online = useOnline();
+  const [user, setUser] = useState({
+    name: "pooja",
+    email: "pooja@gmail.com",
+  });
 
   return (
     <>
       {online ? (
         <>
-          <Header />
-          <Outlet />
+          <UserContext.Provider
+            value={{
+              user: user,
+              setUser: setUser,
+            }}
+          >
+            <Header />
+            <Outlet />
+          </UserContext.Provider>
           <Footer />
         </>
       ) : (

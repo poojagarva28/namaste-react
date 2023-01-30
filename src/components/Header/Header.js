@@ -1,12 +1,15 @@
 import Logo from "../Logo/Logo";
 import { LogOut, Settings, ShoppingCart, User } from "react-feather";
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import UserContext from "../../../utils/userContext";
 
 const Header = () => {
   const [showUserOptions, setShowUserOptions] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
+
+  const { user } = useContext(UserContext);
 
   return (
     <div className="header">
@@ -21,6 +24,10 @@ const Header = () => {
           <Link to="/contact">Contact</Link>
         </li>
       </ul>
+      <div>
+        <p>{user.name}</p>
+        <p>{user.email}</p>
+      </div>
       <div className="profilesection">
         {isLoggedIn ? (
           <div>

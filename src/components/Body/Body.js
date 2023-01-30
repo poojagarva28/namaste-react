@@ -1,13 +1,18 @@
 import RestaurantCard from "../RestaurantCard/RestaurantCard";
 import { RestaurantData } from "../../constants";
 import { Search } from "react-feather";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import Shimmer from "../Shimmer/Shimmer";
+import UserContext from "../../../utils/userContext";
 
 const Body = () => {
   const [searchItem, setSearchItem] = useState("");
   const [restaurantList, setRestaurantList] = useState([]);
   const [fiteredRestaurant, setFiteredRestaurant] = useState([]);
+
+  const { user, setUser } = useContext(UserContext);
+  // console.log("user", user);
+  console.log("userContext", user, setUser);
 
   const filterRestaurant = (searchItem, restaurantList) => {
     // console.log(searchItem);
@@ -36,6 +41,32 @@ const Body = () => {
 
   return (
     <section>
+      <div style={{ textAlign: "center" }}>
+        <p>{user.name}</p>
+        <p>{user.email}</p>
+        <input
+          type="text"
+          value={user.name}
+          placeholder="name"
+          onChange={(e) =>
+            setUser({
+              ...user,
+              name: e.target.value,
+            })
+          }
+        />
+        <input
+          type="text"
+          placeholder="email"
+          value={user.email}
+          onChange={(e) =>
+            setUser({
+              ...user,
+              email: e.target.value,
+            })
+          }
+        />
+      </div>
       <div className="search">
         <input
           type="text"
