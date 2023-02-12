@@ -1,5 +1,6 @@
 import React, { lazy, Suspense, useState } from "react";
 import ReactDOM from "react-dom/client";
+import { Provider } from "react-redux";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import useOnline from "../utils/useOnline";
 import UserContext from "../utils/userContext";
@@ -10,10 +11,12 @@ import Signup from "./components/Authentication/Signup";
 import Body from "./components/Body/Body";
 import Contact from "./components/Contact/Contact";
 import ErrorPage from "./components/ErrorPage/ErrorPage";
+import Cart from "./components/Cart/Cart";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import RestaurantMenu from "./components/RestaurantMenu/RestaurantMenu";
 import RestaurantMenuShimmer from "./components/Shimmer/RestaurantMenuShimmer";
+import store from "../utils/store";
 const Instamart = lazy(() => import("./components/InstaMart/InstaMart"));
 
 const App = () => {
@@ -24,7 +27,7 @@ const App = () => {
   });
 
   return (
-    <>
+    <Provider store={store}>
       {online ? (
         <>
           <UserContext.Provider
@@ -43,7 +46,7 @@ const App = () => {
           Please check your internet connection.
         </h1>
       )}
-    </>
+    </Provider>
   );
 };
 
@@ -88,6 +91,10 @@ const router = createBrowserRouter([
             </div>
           </div>
         ),
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
     ],
   },

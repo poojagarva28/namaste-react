@@ -237,7 +237,7 @@ footer h4 {
   background-color: #e1d3b1;
   border-radius: 20px;
   margin-bottom: 15px;
-  width: 70%;
+  width: 93%;
   box-shadow: 0 0 2px #e1d3b1;
   position: relative;
 }
@@ -380,6 +380,10 @@ footer h4 {
   margin-right: 5px;
 }
 
+.restaurantmenu-container .restaurantitem-container {
+  display: flex;
+}
+
 /* Shimmer */
 .shimmer {
   width: 285px;
@@ -455,4 +459,26 @@ form a {
   justify-content: center;
   align-items: center;
   height: 100vh;
+}
+
+/* cart */
+.addtocart-btn {
+  text-align: right;
+}
+.addtocart-btn button {
+  width: 75%;
+  padding: 10px;
+}
+
+.cart {
+  width: 400px;
+  background: #e2d2b1;
+  border-radius: 20px;
+  padding: 15px 20px;
+  display: block;
+  position: sticky;
+  top: 20px;
+  min-height: 1px;
+  max-height: 70vh;
+  height: auto;
 }

@@ -31,7 +31,9 @@ const Header = () => {
       <div className="profilesection">
         {isLoggedIn ? (
           <div>
-            <ShoppingCart />
+            <Link to="/cart">
+              <ShoppingCart />
+            </Link>
             &nbsp;
             <User onClick={() => setShowUserOptions(!showUserOptions)} />
             {showUserOptions && (

@@ -11,7 +11,7 @@ const RestaurantInfo = () => {
   return (
     <>
       {console.log(restaurant, "restaurantMenu")}
-      <div class="restaurant-details">
+      <div className="restaurant-details">
         <img src={IMG_URL + restaurant?.cloudinaryImageId} />
         <div className="restaurant-name">
           <h2>{restaurant?.name}</h2>
